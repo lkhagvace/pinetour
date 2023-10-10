@@ -1,0 +1,911 @@
+body {
+    margin: 0;
+}
+
+
+@font-face {
+    font-family: Nico-Moji;
+    src: url(./NicoMoji-Regular.ttf);
+}
+
+p{
+    margin: 0 0 ;
+}
+
+.dot{
+    color: #1AC74A;
+}
+
+.nico{
+    color: #1AC74A;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: Nico-Moji;
+}
+
+.price .nico{
+    margin: auto;
+}
+
+
+.tod{
+    color: #303030;
+    font-family: Montserrat;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+h5{
+    color: #777;
+}
+
+body{
+    background: #F4F4F4;
+    gap: 30px;
+}
+
+h4{
+    font-size: 2rem;
+}
+
+h1{
+    font-size: 4rem;
+}
+
+li{
+    color: #777;
+}header{
+    display: flex;
+    flex-direction: column;
+}
+
+header img:hover{
+    box-shadow: 8px 8px 8px rgb(176, 175, 175);
+}
+
+header nav{
+    background-color: rgb(7, 6, 6);
+    color: white;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    width: 100vw;
+}
+
+header .destination{
+    margin: auto;
+    justify-content: center;
+    display: flex;
+}
+
+header .destination .first{
+    display: flex;
+}
+
+header .destination .second{
+    display: flex;
+}
+
+header h1{
+    margin:auto ;
+}
+
+main{
+   display: flex;
+   flex-direction: column;
+}
+main .gol{
+    display: flex;
+}
+main .tours{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+    width: 100%;
+    margin-left: 10%;
+}
+
+main .tours h3{
+    padding-bottom: 10px;
+}
+
+
+main .tours h1{
+    padding-bottom: 10px;
+}
+
+
+main .gol .tours  .cards{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+} 
+
+main .gol .tours .cards button{
+    color: #303030;
+    background-color: white;
+    display: flex;
+    border: #101010;
+    justify-content:space-between ;
+    border-radius: 8px;
+    font-family: 'Montserrat';
+    gap: 30px;
+    box-shadow: 8px 8px 8px rgb(176, 175, 175);
+}
+
+main .gol .tours .cards button:hover{
+    background-color: #101010;
+    color: #FFF;
+    height: 110px;
+    width: 420px;
+}
+
+main .price{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    gap: 60px;
+}
+
+main .tours .cards p{
+    margin-top: 20px;
+    font-size: 1rem;
+
+}
+
+
+
+main .price .price-box{
+    gap: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+main .price .lux{
+    border-radius: 8px;
+    background: #FFF;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    justify-content: space-between;
+    box-shadow: 8px 8px 8px rgb(176, 175, 175);
+}
+
+main .price .normal{
+    border-radius: 8px;
+    background: #FFF;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    justify-content: space-between;
+    box-shadow: 8px 8px 8px rgb(176, 175, 175);
+}
+
+
+.lux:hover {
+    border: 2px solid #18BA51;
+}
+
+main .price .price-box li:hover{
+    font-size: 2rem;
+}
+
+.normal:hover {
+    border: 2px solid #18BA51;
+}
+
+footer{
+    background: #171717;
+    display: flex;
+    flex-direction: column;
+}
+
+footer h4{
+    color: #FFF;
+    margin: auto;
+    padding-top: 10px;
+}
+
+footer .orderb{
+    border-radius: 4px;
+    background: #18BA51;
+    color: #FFF;
+    margin: auto;
+    text-decoration: none;
+}
+
+footer .orderb:hover{
+    width:140px;
+}
+
+footer nav button{
+    border-radius: 4px;
+    background: #303030;
+    color: #FFF;
+    display: flex;
+}
+
+
+footer nav button:hover{
+    width:140px;
+    height: 54px;
+}
+
+
+footer nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+footer nav p{
+    color: #FFF;
+    display: flex;
+    
+} footer nav button{
+    display: flex;
+    align-items: center ;
+}
+
+button{
+    border: 0;
+}
+
+.cards{
+    display: flex;
+}
+
+.card1,.card2,.card3,.card4,.card5 {
+    width: 400px;
+}
+
+
+@media (min-width:350px) and (max-width:480px){
+    
+    
+    header .destination{
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    header h1{
+        font-size: 3rem;
+    }
+    
+    header .destination .first, .second{
+        gap: 20px;
+    }
+    
+    header .destination img{
+        width: 150px;
+        height: 200px;
+        flex-shrink: 0;
+    }
+    
+    main .gol .tours{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    main .gol .tours .cards button:hover{
+        background-color: #101010;
+        color: #FFF;
+        height: 60px;
+        width: 240px;
+    }
+
+    main{
+        padding-bottom: 30px;
+        margin: auto;
+    }
+    
+    #talbai,#dow,#togoo,#hiid,#nuur{
+        display: none;
+    }
+    
+    main .tours button{
+        width: 220px;
+        height: 90px;
+        margin: auto;
+    }
+
+    main .tours button:hover{
+        height: 200px;
+    }
+    main .price .lux{
+        width: 308px;
+        height: 370px;
+        margin: auto;
+    }
+
+    main .cards{
+        width: 100%;
+    }
+    .card1,.card2,.card3,.card4,.card5{
+        width: 100%;
+    }
+    
+    main .price .normal{
+        width: 308px;
+        height: 370px;
+        margin: auto;
+    }
+    
+    .nico{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    footer button{
+        width: 130px;
+        height: 44px;
+    }
+    
+    footer nav{
+        margin-left: 60px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    footer nav .buttonbar{
+        gap: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    footer nav p{
+        font-size: 2rem;
+    }
+    footer nav button p{
+        font-size: 1rem;
+    }
+
+    
+    footer{
+        gap: 30px;
+    }
+
+
+}
+
+@media(min-width:481px) and (max-width:767px){
+    
+    
+    header .destination{
+        flex-direction: column;
+        gap: 30px;
+    } 
+    
+    header h1{
+        font-size: 4rem;
+    }
+    
+    main{
+        padding-bottom: 50px;
+    }
+
+    #talbai,#dow,#togoo,#hiid,#nuur{
+        display: none;
+    }
+    
+    header .destination .first, .second{
+        gap: 30px;
+    }
+    
+    header .destination img{
+        width: 180px;
+        height: 220px;
+    }
+    
+    main .gol .tours{
+        display: flex;
+        margin: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    
+    main .tours button{
+        width: 330px;
+        height: 80px;
+    }
+    
+    main .price .lux{
+        width: 308px;
+        height: 370px;
+    }
+    
+    main .price .normal{
+        width: 308px;
+        height: 370px;
+    }
+    
+    footer button{
+        width: 130px;
+        height: 44px;
+    }
+    
+    footer nav{
+        flex-direction: column;
+        margin-left: 60px;
+    }
+    
+    footer nav .buttonbar{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    footer nav p{
+        font-size: 2rem;
+    }
+    footer nav button p{
+        font-size: 1rem;
+    }
+    
+    footer{
+        gap: 30px;
+    }
+
+
+}
+
+@media(min-width:768px) and (max-width:1280px){
+   
+   
+    header .destination{
+        gap: 40px;
+        flex-direction: column;
+    }
+    header .destination .first{
+        gap: 40px;
+    }header .destination .second{
+        gap: 40px;
+    }
+    header .destination img{
+        width: 250px;
+        height: 250px;
+    }main{
+        padding-top: 130px;
+        padding-bottom: 50px;
+        gap: 50px;
+    }
+    
+    #talbai,#dow,#togoo,#hiid,#nuur{
+        display: none;
+    }
+    
+    main .gol .tours{
+        display: flex;
+        margin: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    main .tours button{
+        width: 400px;
+        height: 100px;
+        margin: auto;
+    }
+
+    main .tours .nico{
+        display: flex;
+        justify-content: center;
+    }
+
+    main .price .price-box{
+        margin: auto;
+    }
+
+    .price .nico,.tod{
+        display: flex;
+        justify-content: center;
+    }
+
+
+    main .price .lux{
+        width: 250px;
+        height: 370px;
+    }main .price .normal{
+        width: 250px;
+        height: 370px;
+    }footer button{
+        width: 130px;
+        height: 44px;
+    }
+
+    footer{
+        padding-left:80px ;
+    padding-right:80px ;
+    padding-top:60px ;
+    padding-bottom:60px ;
+    }
+
+    footer nav .buttonbar{
+        gap: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-right: 20px;
+    }footer nav{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    footer nav p{
+        font-size: 2rem;
+    }
+    footer nav button p{
+        font-size: 1rem;
+    }
+    footer{
+        gap: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+ }
+ 
+ @media (min-width:1281px) and (max-width: 1650px){
+
+    header{
+    gap: 50px;
+}
+
+header h1{
+    font-size: 4rem;
+}
+
+header .destination{
+    gap: 66px;
+    flex-direction: row;
+}
+
+header .destination .first{
+    gap: 66px;
+}
+
+main .tours .mainug p{
+    font-size: 3rem;
+}
+
+header .destination .second{
+    gap: 66px;
+}
+
+header .destination img{
+    width: 250px;
+    height: 425px;
+    flex-shrink: 0;
+}
+
+main{
+    padding-top: 130px;
+    padding-bottom: 50px;
+    gap: 50px;
+}
+
+main .tours{
+    display: flex;
+    flex-direction: column;
+}
+
+main .tours button{
+    width: 400px;
+    height: 100px;
+}
+
+main .price{
+    padding-top: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+main .price .price-box{
+    display: flex;
+    flex-direction: row;
+}
+
+main .price .lux{
+    width: 250px;
+    height: 370px;
+}
+
+main .price .normal{
+    width: 250px;
+    height: 370px;
+}
+
+footer button{
+    width: 130px;
+    height: 44px;
+}
+
+footer nav{
+    display:flex;
+    padding-left:120px ;
+    padding-right:120px ;
+    padding-top:80px ;
+    padding-bottom:80px ;
+}
+
+footer nav .buttonbar{
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 0px;
+}
+
+footer nav p{
+    font-size: 2rem;
+}
+footer nav button p{
+    font-size: 1rem;
+}
+
+footer{
+    gap: 30px;
+}
+
+footer h4{
+    padding-top: 50px;
+}
+main .price .nico{
+    display: flex;
+    justify-content: center;
+}
+
+.card1:hover #talbai{
+    display: block;
+    opacity: 1;
+}
+
+.card2:hover #hiid{
+display: block;
+opacity: 1;
+}
+
+.card3:hover #dow{
+display: block;
+opacity: 1;
+}
+
+.card4:hover #togoo{
+display: block;
+opacity: 1;
+}
+
+.card5:hover #nuur{
+display: block;
+opacity: 1;
+}
+
+#hiid{
+position: absolute;
+right: 0;
+top: 0;
+transition-duration: 1s;
+opacity: 0;
+}
+
+#talbai{
+position: absolute;
+opacity: 0;
+right: 0;
+top: 0;
+transition-duration: 1s;
+}
+
+#nuur{
+position: absolute;
+right: 0;
+top: 0;
+transition-duration: 1s;
+opacity: 0;
+}
+
+#dow{
+position: absolute;
+right: 0;
+top: 0;
+transition-duration: 1s;
+opacity: 0;
+}
+
+#togoo{
+position: absolute;
+right: 0;
+top: 0;
+transition-duration: 1s;
+opacity: 0;
+}
+ } 
+
+ @media (min-width:1651px) and (max-width: 2500px){
+    header{
+        gap: 50px;
+    }
+    
+    header h1{
+        font-size: 4rem;
+    }
+    
+    header .destination{
+        gap: 90px;
+        flex-direction: row;
+    }
+    
+    header .destination .first{
+        gap: 90px;
+    }
+    header .destination .second{
+        gap: 90px;
+    }
+    
+    main .tours .mainug p{
+        font-size: 3rem;
+    }
+    
+    header .destination img{
+        width: 300px;
+        height: 500px;
+        flex-shrink: 0;
+    }
+    
+    main{
+        padding-top: 130px;
+        padding-bottom: 150px;
+        gap: 50px;
+    }
+    
+    main .tours{
+        display: flex;
+        flex-direction: column;
+        margin-left: 15% ;
+    }
+    
+    main .tours button{
+        width: 400px;
+        height: 100px;
+    }
+    
+    main .price{
+        padding-top: 300px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    main .price .price-box{
+        display: flex;
+        flex-direction: row;
+    }
+    
+    main .price .lux{
+        width: 250px;
+        height: 370px;
+    }
+    
+    main .price .normal{
+        width: 250px;
+        height: 370px;
+    }
+    
+    footer button{
+        width: 130px;
+        height: 44px;
+    }
+    
+    footer nav{
+        display:flex;
+        padding-left:120px ;
+        padding-right:120px ;
+        padding-top:80px ;
+        padding-bottom:80px ;
+    }
+    
+    footer nav .buttonbar{
+        gap: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-right: 0px;
+    }
+    
+    footer nav p{
+        font-size: 2rem;
+    }
+    footer nav button p{
+        font-size: 1rem;
+    }
+    
+    footer{
+        gap: 30px;
+    }
+    
+    footer h4{
+        padding-top: 50px;
+    }
+    main .price .nico{
+        display: flex;
+        justify-content: center;
+    }
+    
+    .card1:hover #talbai{
+        display: block;
+        opacity: 1;
+    }
+    
+    .card2:hover #hiid{
+    display: block;
+    opacity: 1;
+    }
+    
+    .card3:hover #dow{
+    display: block;
+    opacity: 1;
+    }
+    
+    .card4:hover #togoo{
+    display: block;
+    opacity: 1;
+    }
+    
+    .card5:hover #nuur{
+    display: block;
+    opacity: 1;
+    }
+    
+    #hiid{
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition-duration: 1s;
+    opacity: 0;
+    }
+    
+    #talbai{
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+    transition-duration: 1s;
+    }
+    
+    #nuur{
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition-duration: 1s;
+    opacity: 0;
+    }
+    
+    #dow{
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition-duration: 1s;
+    opacity: 0;
+    }
+    
+    #togoo{
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition-duration: 1s;
+    opacity: 0;
+    }
+ }
