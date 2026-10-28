@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="mn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02 · Зай, өнгө, текст</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-slate-100 p-8">
+    <h1 class="text-3xl font-bold">Зай · Өнгө · Текст</h1>
+
+    <!-- 1. Зай: тоо × 4 = px -->
+    <h2 class="text-xl font-bold mt-10">1. Зай</h2>
+    <div class="bg-sky-200 p-2 mt-4">p-2 = 8px</div>
+    <div class="bg-sky-200 p-4 mt-4">p-4 = 16px</div>
+    <div class="bg-sky-200 p-8 mt-4">p-8 = 32px</div>
+    <div class="bg-sky-200 px-8 py-2 mt-4">px-8 py-2 = зүүн баруун 32px, дээр доор 8px</div>
+
+    <!-- 2. Өнгө: bg / text / border + нэр + тод (50–950) -->
+    <h2 class="text-xl font-bold mt-10">2. Өнгө</h2>
+    <div class="bg-emerald-100 text-emerald-800 p-4 mt-4 rounded-lg">bg-emerald-100 text-emerald-800</div>
+    <div class="bg-emerald-600 text-white p-4 mt-4 rounded-lg">bg-emerald-600 text-white</div>
+    <div class="bg-white border-2 border-emerald-500 p-4 mt-4 rounded-lg">border-2 border-emerald-500</div>
+
+    <!-- 3. Текст: хэмжээ, жин, байрлал -->
+    <h2 class="text-xl font-bold mt-10">3. Текст</h2>
+    <p class="text-sm mt-4">text-sm — 14px</p>
+    <p class="text-xl">text-xl — 20px</p>
+    <p class="text-4xl font-bold">text-4xl font-bold</p>
+    <p class="text-gray-500 text-center">text-gray-500 text-center</p>
+
+    <!-- 4. Бүгдийг нийлүүлбэл -->
+    <h2 class="text-xl font-bold mt-10">4. Нийлүүлбэл</h2>
+    <div class="bg-white p-6 mt-4 rounded-xl shadow-md max-w-md">
+      <span class="bg-sky-100 text-sky-800 text-sm font-semibold px-3 py-1 rounded-full">☀️ Зун</span>
+      <h3 class="text-2xl font-bold mt-3">Хөвсгөл нуур</h3>
+      <p class="text-gray-500 mt-1">Монголын «хөх сувд». 3 өдөр · 2 шөнө.</p>
+    </div>
+  </body>
+</html>

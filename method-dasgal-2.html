@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Текст ба массивын method — дахиад 5 дасгал</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background-color: #F5F2EC; color: #575146; padding: 40px 20px 90px; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.6; }
+  .page { max-width: 900px; margin: 0 auto; }
+
+  .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .16em; color: #B8862A; margin-bottom: 6px; }
+  h1 { font-family: Georgia, serif; font-size: 42px; line-height: 1.15; color: #B03A1A; margin-bottom: 8px; }
+  .lead { font-size: 17px; }
+
+  .start { background-color: #FFFDF8; border: 2px solid #DCD5C7; border-radius: 14px; padding: 22px 26px; margin: 26px 0 40px; }
+  .start h3 { font-size: 14px; letter-spacing: .08em; color: #0D3B2F; margin-bottom: 10px; }
+  .start ol { padding-left: 22px; }
+  .start li { font-size: 15.5px; line-height: 1.85; }
+  .start code, .uses b, .hint code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .92em; }
+  .start li code { background-color: #F0EDE6; border-radius: 4px; padding: 1px 6px; }
+
+  pre { background-color: #16130F; color: #EDE7DC; border-radius: 10px; padding: 16px 18px; margin-top: 12px; overflow-x: auto;
+        font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; line-height: 1.65; }
+
+  .ex { background-color: #FFFDF8; border: 2px solid #DCD5C7; border-radius: 14px; padding: 24px 28px 26px; margin-bottom: 24px; }
+  .ex-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .num { background-color: #B03A1A; color: #fff; font-size: 12.5px; font-weight: 700; letter-spacing: .08em; padding: 4px 12px; border-radius: 100px; }
+  .level { font-size: 12.5px; font-weight: 700; padding: 4px 12px; border-radius: 100px; }
+  .l1 { background-color: #DDEEE6; color: #0D3B2F; }
+  .l2 { background-color: #F8F0DB; color: #7A5410; }
+  .l3 { background-color: #FAE8E0; color: #7E2A0D; }
+  .group { font-family: Georgia, serif; font-size: 28px; font-weight: 400; color: #0D3B2F; margin: 44px 0 16px; padding-bottom: 10px; border-bottom: 2px solid #DCD5C7; }
+  .ex h2 { font-family: Georgia, serif; font-size: 24px; color: #0D3B2F; margin-bottom: 4px; }
+  .task { font-size: 16.5px; margin-bottom: 16px; }
+  .label { font-size: 11.5px; font-weight: 700; letter-spacing: .14em; color: #0D3B2F; margin-bottom: 10px; }
+
+  /* prompt → alert / console жишээ */
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .arrow { color: #B8862A; font-size: 22px; font-weight: 700; }
+  .mock { border-radius: 10px; padding: 10px 14px; min-width: 180px; max-width: 100%; }
+  .mock .tag { display: block; font-family: ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 700; letter-spacing: .06em; margin-bottom: 4px; }
+  .mock p { font-size: 14.5px; color: #16130F; }
+  .prompt { background-color: #FFFFFF; border: 1.5px solid #DCD5C7; }
+  .prompt .tag { color: #0D3B2F; }
+  .prompt .field { margin-top: 6px; border: 1.5px solid #7FB59E; border-radius: 6px; padding: 4px 10px; font-weight: 700; color: #0D3B2F; background-color: #F3FAF6; }
+  .alert { background-color: #FFFFFF; border: 1.5px solid #E8C4B4; }
+  .alert .tag { color: #B03A1A; }
+  .alert .ok { display: inline-block; margin-top: 6px; background-color: #C0451B; color: #fff; font-size: 12px; font-weight: 700; border-radius: 6px; padding: 2px 12px; }
+  .console { background-color: #16130F; }
+  .console .tag { color: #8E8777; }
+  .console code { display: block; color: #9CD6A8; font-family: ui-monospace, Menlo, monospace; font-size: 14px; }
+
+  .hint { margin-top: 14px; font-size: 15px; background-color: #F8F0DB; border-radius: 8px; padding: 8px 14px; color: #5E4310; }
+  .uses { margin-top: 14px; font-size: 14px; color: #8E8777; }
+  .uses b { color: #575146; }
+
+  details { margin-top: 14px; }
+  summary { display: inline-block; cursor: pointer; font-size: 13px; font-weight: 700; color: #7A5410;
+            background-color: #F8F0DB; border: 1px solid #E5D2A4; border-radius: 100px; padding: 4px 14px; }
+  summary:hover { background-color: #F2E6C6; }
+</style>
+</head>
+<body>
+<div class="page">
+  <p class="eyebrow">ХИЧЭЭЛ 18 · METHOD</p>
+  <h1>Текст ба массивын method — дахиад 5 дасгал</h1>
+  <p class="lead">split · length · includes · toUpperCase · slice · push · indexOf · splice · join · confirm + for</p>
+
+  <div class="start">
+    <h3>ЭХЛЭХ</h3>
+    <ol>
+      <li>Шинэ хавтас нээгээд <code>index.html</code>, <code>script.js</code> гэсэн хоёр файл үүсгэ.</li>
+      <li><code>index.html</code>-д доорх кодыг хуул. <code>&lt;script&gt;</code> нь body-гийн хамгийн доор байна.</li>
+      <li>Дасгал бүрийг <code>script.js</code>-д бич. Дараагийн дасгал руу шилжихдээ өмнөхөө <code>/* */</code>-аар comment болго.</li>
+      <li>Console-оо нээ: <code>Cmd + Option + J</code>. Алдаа гарвал улаан мөрийг унш.</li>
+    </ol>
+    <pre>&lt;!doctype html&gt;
+&lt;html lang="mn"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;title&gt;JS дасгал&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;JS дасгал&lt;/h1&gt;
+
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+  </div>
+
+  <section class="ex">
+    <div class="ex-head"><span class="num">ДАСГАЛ 1</span></div>
+    <h2>Өгүүлбэрийн шинжилгээ 📝</h2>
+    <p class="task">Өгүүлбэрт хэдэн үг байгааг, хамгийн урт үгийг (тэнцүү бол эхнийхийг) үсгийн тоотой нь, target үг хэдэн удаа орсныг хэвлэ. Өгүүлбэрийн хоёр талд зай байж болно.</p>
+    <p class="label">ЭХЛЭХ КОД — хуулж ав</p>
+    <pre style="margin-bottom:6px">const text = "Монгол хэл бол маш баян хэл";
+const target = "хэл";</pre>
+    <p class="label" style="margin-top:14px">CONSOLE ДЭЭР ГАРАХ ЁСТОЙ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› 📝 6 үг</code><code>› 📏 Хамгийн урт: Монгол (6 үсэг)</code><code>› 🔁 «хэл» 2 удаа</code></div></div><p class="label" style="margin-top:14px">ХЭРЭВ <code style="letter-spacing:0;font-size:13px">const text = "  нэг хоёр гурав хоёр  ";</code> БОЛ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› 📝 4 үг</code><code>› 📏 Хамгийн урт: гурав (5 үсэг)</code><code>› 🔁 «хэл» 0 удаа</code></div></div>
+    <p class="hint">💡 trim().split(" ") → үгсийн массив; үгийн тоо = массивын length. Хамгийн уртыг эхний үгээс эхэлж, words[i].length-ээр харьцуул. target-тэй тэнцэх үг бүрт тоолуур нэм.</p>
+    <p class="uses">Хэрэглэх: <b>trim · split · length · for · if · ===</b></p>
+  </section>
+  <section class="ex">
+    <div class="ex-head"><span class="num">ДАСГАЛ 2</span></div>
+    <h2>Нууц үгийн хүч 🔐</h2>
+    <p class="task">Нууц үгийг 4 дүрмээр шалгаад мөр бүрт ✅ / ❌ хэвлэ: 8+ тэмдэгт, тоо орсон, том үсэг орсон, нэвтрэх нэр (жижиг үсгээр ч) ороогүй. Төгсгөлд: 4 дүрэм бүгд бол «💪 Хүчтэй», 2–3 бол «🙂 Дунд», 0–1 бол «😟 Сул».</p>
+    <p class="label">ЭХЛЭХ КОД — хуулж ав</p>
+    <pre style="margin-bottom:6px">const password = "Pinecone2026";
+const username = "bat";</pre>
+    <p class="label" style="margin-top:14px">CONSOLE ДЭЭР ГАРАХ ЁСТОЙ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› ✅ 8+ тэмдэгт</code><code>› ✅ Тоо орсон</code><code>› ✅ Том үсэг орсон</code><code>› ✅ Нэвтрэх нэр ороогүй</code><code>› 💪 Хүчтэй</code></div></div><p class="label" style="margin-top:14px">ХЭРЭВ <code style="letter-spacing:0;font-size:13px">const password = "bat12345";</code> БОЛ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› ✅ 8+ тэмдэгт</code><code>› ✅ Тоо орсон</code><code>› ❌ Том үсэг алга</code><code>› ❌ Нэвтрэх нэрээ бүү ашигла</code><code>› 🙂 Дунд</code></div></div><p class="label" style="margin-top:14px">ХЭРЭВ <code style="letter-spacing:0;font-size:13px">const password = "abc";</code> БОЛ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› ❌ 8-аас богино</code><code>› ❌ Тоо алга</code><code>› ❌ Том үсэг алга</code><code>› ✅ Нэвтрэх нэр ороогүй</code><code>› 😟 Сул</code></div></div>
+    <p class="hint">💡 Үсэг бүрийг password[i]-ээр давтан шалга. Тоо мөн эсэх: "0123456789".includes(үсэг). Том үсэг мөн эсэх: үсэг !== үсэг.toLowerCase(). Хэдэн дүрэм биелснийг тоолуураар тоол.</p>
+    <p class="uses">Хэрэглэх: <b>length · for · password[i] · includes · toLowerCase · тоолуур</b></p>
+  </section>
+  <section class="ex">
+    <div class="ex-head"><span class="num">ДАСГАЛ 3</span></div>
+    <h2>Сагсны командууд 🤖</h2>
+    <p class="task">commands массивын команд бүрийг дарааллаар нь гүйцэтгэ. «add 🍎» — сагсанд байхгүй бол нэм, байвал анхааруулга. «remove 🥛» — байвал устга, байхгүй бол түүнийг хэвлэ. Төгсгөлд нь сагсыг хэвлэ.</p>
+    <p class="label">ЭХЛЭХ КОД — хуулж ав</p>
+    <pre style="margin-bottom:6px">const commands = ["add 🍎", "add 🥛", "add 🍎", "remove 🥛", "remove 🧀", "add 🍞"];
+const cart = [];</pre>
+    <p class="label" style="margin-top:14px">CONSOLE ДЭЭР ГАРАХ ЁСТОЙ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› ➕ 🍎</code><code>› ➕ 🥛</code><code>› ⚠️ 🍎 сагсанд байна</code><code>› ➖ 🥛</code><code>› 😶 🧀 сагсанд алга</code><code>› ➕ 🍞</code><code>› 🛒 🍎 🍞</code></div></div>
+    <p class="hint">💡 Команд бүрийг split(" ") → [үйлдэл, бараа]. Үйлдэл "add" бол includes → push. "remove" бол indexOf → -1 биш бол splice.</p>
+    <p class="uses">Хэрэглэх: <b>for · split · includes · push · indexOf · splice · join</b></p>
+  </section>
+  <section class="ex">
+    <div class="ex-head"><span class="num">ДАСГАЛ 4</span></div>
+    <h2>Ангийн жагсаалт цэгцлэх 👥</h2>
+    <p class="task">Багш нэрсийг янз бүрээр бичжээ. Нэр бүрийн зайг арилгаад, эхний үсгийг том, бусдыг жижиг болго. Давхардсан нэрийг НЭГ л удаа үлдээ. Шинэ массивт цуглуулаад тоо, нэрсийг хэвлэ.</p>
+    <p class="label">ЭХЛЭХ КОД — хуулж ав</p>
+    <pre style="margin-bottom:6px">const raw = ["  бат", "САРАА ", "бат", "ану", " Сараа", "БОЛД"];</pre>
+    <p class="label" style="margin-top:14px">CONSOLE ДЭЭР ГАРАХ ЁСТОЙ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› 👥 4 сурагч: Бат, Сараа, Ану, Болд</code></div></div>
+    <p class="hint">💡 Хоосон names массиваас эхэл. Нэр бүрт: trim → эхний үсэг toUpperCase() + slice(1).toLowerCase(). names.includes(нэр) биш бол л push.</p>
+    <p class="uses">Хэрэглэх: <b>for · trim · [0] · toUpperCase · slice · toLowerCase · includes · push · join</b></p>
+  </section>
+  <section class="ex">
+    <div class="ex-head"><span class="num">ДАСГАЛ 5</span></div>
+    <h2>Спам цэвэрлэх 🎰</h2>
+    <p class="task">«🎰» орсон зурвас бүрийг confirm-оор асуугаад OK бол устга, Cancel бол үлдээ. СҮҮЛЭЭС нь эхэлж шалга. Асуух текст: «Спам устгах уу: «зурвас»?». Төгсгөлд хэдэн зурвас үлдсэн, юу юу үлдсэнийг хэвлэ.</p>
+    <p class="label">ЭХЛЭХ КОД — хуулж ав</p>
+    <pre style="margin-bottom:6px">const messages = ["Сайн уу 👋", "🎰 Шагнал авах", "🎰 Үнэгүй утас", "Маргааш уулзах уу?"];</pre>
+    <p class="label" style="margin-top:14px">CONFIRM → OK, OK ДАРВАЛ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› 🗑 Устгалаа: 🎰 Үнэгүй утас</code><code>› 🗑 Устгалаа: 🎰 Шагнал авах</code><code>› 📬 2 зурвас: Сайн уу 👋 · Маргааш уулзах уу?</code></div></div><p class="label" style="margin-top:14px">CONFIRM → OK, CANCEL ДАРВАЛ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› 🗑 Устгалаа: 🎰 Үнэгүй утас</code><code>› ↩️ Үлдээлээ: 🎰 Шагнал авах</code><code>› 📬 3 зурвас: Сайн уу 👋 · 🎰 Шагнал авах · Маргааш уулзах уу?</code></div></div>
+    <p class="hint">💡 Яагаад сүүлээс вэ? splice-ийн дараа ард байсан зурвасууд урагшилдаг — урагшаа давтвал хоёр спам зэрэгцсэн үед нэгийг нь алгасна. i = messages.length - 1-ээс эхэлж i-- хий.</p>
+    <p class="uses">Хэрэглэх: <b>for i-- · includes · confirm · splice · join</b></p>
+  </section>
+</div>
+</body>
+</html>

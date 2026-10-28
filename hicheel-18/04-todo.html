@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="mn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04 · 📝 Todo — push, includes, splice, confirm</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>📝 Хийх зүйлс</h1>
+      <p id="message">Шинэ ажил нэм, эсвэл дугаараар нь устга.</p>
+
+      <input id="todoInput" type="text" placeholder="Шинэ ажил" />
+      <button onclick="addTodo()">➕ Нэмэх</button>
+
+      <pre id="list"></pre>
+
+      <input id="numberInput" type="number" placeholder="Хэддүгээрийг устгах вэ?" />
+      <button onclick="removeByNumber()">🗑 Устгах</button>
+    </main>
+
+    <script src="04-todo.js"></script>
+  </body>
+</html>

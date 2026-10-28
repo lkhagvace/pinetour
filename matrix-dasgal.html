@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Матриц, 2D массив — 10 дасгал</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background-color: #F5F2EC; color: #575146; padding: 40px 20px 90px; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.6; }
+  .page { max-width: 900px; margin: 0 auto; }
+
+  .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .16em; color: #B8862A; margin-bottom: 6px; }
+  h1 { font-family: Georgia, serif; font-size: 42px; line-height: 1.15; color: #B03A1A; margin-bottom: 8px; }
+  .lead { font-size: 17px; }
+
+  .start { background-color: #FFFDF8; border: 2px solid #DCD5C7; border-radius: 14px; padding: 22px 26px; margin: 26px 0 40px; }
+  .start h3 { font-size: 14px; letter-spacing: .08em; color: #0D3B2F; margin-bottom: 10px; }
+  .start ol { padding-left: 22px; }
+  .start li { font-size: 15.5px; line-height: 1.85; }
+  .start code, .uses b, .hint code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .92em; }
+  .start li code { background-color: #F0EDE6; border-radius: 4px; padding: 1px 6px; }
+
+  pre { background-color: #16130F; color: #EDE7DC; border-radius: 10px; padding: 16px 18px; margin-top: 12px; overflow-x: auto;
+        font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; line-height: 1.65; }
+
+  .ex { background-color: #FFFDF8; border: 2px solid #DCD5C7; border-radius: 14px; padding: 24px 28px 26px; margin-bottom: 24px; }
+  .ex-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .num { background-color: #B03A1A; color: #fff; font-size: 12.5px; font-weight: 700; letter-spacing: .08em; padding: 4px 12px; border-radius: 100px; }
+  .level { font-size: 12.5px; font-weight: 700; padding: 4px 12px; border-radius: 100px; }
+  .l1 { background-color: #DDEEE6; color: #0D3B2F; }
+  .l2 { background-color: #F8F0DB; color: #7A5410; }
+  .l3 { background-color: #FAE8E0; color: #7E2A0D; }
+  .group { font-family: Georgia, serif; font-size: 28px; font-weight: 400; color: #0D3B2F; margin: 44px 0 16px; padding-bottom: 10px; border-bottom: 2px solid #DCD5C7; }
+  .ex h2 { font-family: Georgia, serif; font-size: 24px; color: #0D3B2F; margin-bottom: 4px; }
+  .task { font-size: 16.5px; margin-bottom: 16px; }
+  .label { font-size: 11.5px; font-weight: 700; letter-spacing: .14em; color: #0D3B2F; margin-bottom: 10px; }
+
+  /* prompt → alert / console жишээ */
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .arrow { color: #B8862A; font-size: 22px; font-weight: 700; }
+  .mock { border-radius: 10px; padding: 10px 14px; min-width: 180px; max-width: 100%; }
+  .mock .tag { display: block; font-family: ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 700; letter-spacing: .06em; margin-bottom: 4px; }
+  .mock p { font-size: 14.5px; color: #16130F; }
+  .prompt { background-color: #FFFFFF; border: 1.5px solid #DCD5C7; }
+  .prompt .tag { color: #0D3B2F; }
+  .prompt .field { margin-top: 6px; border: 1.5px solid #7FB59E; border-radius: 6px; padding: 4px 10px; font-weight: 700; color: #0D3B2F; background-color: #F3FAF6; }
+  .alert { background-color: #FFFFFF; border: 1.5px solid #E8C4B4; }
+  .alert .tag { color: #B03A1A; }
+  .alert .ok { display: inline-block; margin-top: 6px; background-color: #C0451B; color: #fff; font-size: 12px; font-weight: 700; border-radius: 6px; padding: 2px 12px; }
+  .console { background-color: #16130F; }
+  .console .tag { color: #8E8777; }
+  .console code { display: block; color: #9CD6A8; font-family: ui-monospace, Menlo, monospace; font-size: 14px; }
+
+  .hint { margin-top: 14px; font-size: 15px; background-color: #F8F0DB; border-radius: 8px; padding: 8px 14px; color: #5E4310; }
+  .uses { margin-top: 14px; font-size: 14px; color: #8E8777; }
+  .uses b { color: #575146; }
+
+  details { margin-top: 14px; }
+  summary { display: inline-block; cursor: pointer; font-size: 13px; font-weight: 700; color: #7A5410;
+            background-color: #F8F0DB; border: 1px solid #E5D2A4; border-radius: 100px; padding: 4px 14px; }
+  summary:hover { background-color: #F2E6C6; }
+</style>
+</head>
+<body>
+<div class="page">
+  <p class="eyebrow">ХИЧЭЭЛ 19 · МАТРИЦ</p>
+  <h1>Матриц, 2D массив — 10 дасгал</h1>
+  <p class="lead">[мөр][багана] · length · давталт дотор давталт · if · join · confirm</p>
+
+  <div class="start">
+    <h3>ЭХЛЭХ</h3>
+    <ol>
+      <li>Шинэ хавтас нээгээд <code>index.html</code>, <code>script.js</code> гэсэн хоёр файл үүсгэ.</li>
+      <li><code>index.html</code>-д доорх кодыг хуул. <code>&lt;script&gt;</code> нь body-гийн хамгийн доор байна.</li>
+      <li>Дасгал бүрийг <code>script.js</code>-д бич. Дараагийн дасгал руу шилжихдээ өмнөхөө <code>/* */</code>-аар comment болго.</li>
+      <li>Console-оо нээ: <code>Cmd + Option + J</code>. Алдаа гарвал улаан мөрийг унш.</li>
+    </ol>
+    <pre>&lt;!doctype html&gt;
+&lt;html lang="mn"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;title&gt;JS дасгал&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;JS дасгал&lt;/h1&gt;
+
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+  </div>
+
+  <section class="ex">
+    <div class="ex-head"><span class="num">ДАСГАЛ 1</span></div>
+    <h2>Кино тасалбар шалгах 🎟</h2>
+    <p class="task">Тасалбар дээр эгнээ, суудал 1-ээс дугаарлагдсан. Тэр суудал сул эсэхийг шалгаж хэвлэ. Анхаар: массив 0-ээс тоолно!</p>
+    <p class="label">ЭХЛЭХ КОД — хуулж ав</p>
+    <pre style="margin-bottom:6px">const seats = [
+  ["🟩", "🟩", "🔴", "🟩"],
+  ["🔴", "🟩", "🟩", "🟩"],
+  ["🟩", "🟩", "🟩", "🔴"],
+];
+const row = 1;
+const seat = 3;</pre>
+    <p class="label" style="margin-top:14px">CONSOLE ДЭЭР ГАРАХ ЁСТОЙ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› ❌ Эгнээ 1, суудал 3 захиалагдсан</code></div></div><p class="label" style="margin-top:14px">ХЭРЭВ <code style="letter-spacing:0;font-size:13px">const seat = 2;</code> БОЛ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› ✅ Эгнээ 1, суудал 2 сул байна</code></div></div><p class="label" style="margin-top:14px">ХЭРЭВ <code style="letter-spacing:0;font-size:13px">const row = 3;</code> БОЛ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› ✅ Эгнээ 3, суудал 3 сул байна</code></div></div>
+    <p class="hint">💡 Хүний дугаараас 1-ийг хасаад индекс болго: seats[row - 1][seat - 1]. Тэр нь "🔴" эсэхийг шалга.</p>
+    <p class="uses">Хэрэглэх: <b>[мөр][багана] · - 1 · if / else</b></p>
+  </section>
+  <section class="ex">
+    <div class="ex-head"><span class="num">ДАСГАЛ 2</span></div>
+    <h2>Ангийн суудал 🏫</h2>
+    <p class="task">Ангид хэдэн эгнээ, эгнээ бүрт хэдэн ширээ, нийт хэдэн сурагч байгааг хэвлэ. Дараа нь хамгийн арын эгнээний хамгийн баруун талын сурагч, урд эгнээний голын сурагчийг хэвлэ.</p>
+    <p class="label">ЭХЛЭХ КОД — хуулж ав</p>
+    <pre style="margin-bottom:6px">const classroom = [
+  ["Бат", "Сараа", "Ану"], // урд эгнээ
+  ["Болд", "Тэмүүлэн", "Нараа"], // арын эгнээ
+];</pre>
+    <p class="label" style="margin-top:14px">CONSOLE ДЭЭР ГАРАХ ЁСТОЙ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› 🏫 2 эгнээ × 3 ширээ = 6 сурагч</code><code>› ↘️ Хамгийн ард, баруун талд: Нараа</code><code>› ⬆️ Урд эгнээний голд: Сараа</code></div></div>
+    <p class="hint">💡 Эгнээ = classroom.length, ширээ = classroom[0].length. Хамгийн арын эгнээ = classroom.length - 1, хамгийн баруун = тэр мөрийн length - 1.</p>
+    <p class="uses">Хэрэглэх: <b>length · [r].length · [length - 1]</b></p>
+  </section>
+  <section class="ex">
+    <div class="ex-head"><span class="num">ДАСГАЛ 3</span></div>
+    <h2>Пиксел зураг ❤️</h2>
+    <p class="task">1 бол 🟥, 0 бол ⬜ болгож мөр бүрийг нэг мөрөнд хэвлэ — зүрх гарч ирэх ёстой.</p>
+    <p class="label">ЭХЛЭХ КОД — хуулж ав</p>
+    <pre style="margin-bottom:6px">const pixels = [
+  [0, 1, 0, 1, 0],
+  [1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1],
+  [0, 1, 1, 1, 0],
+  [0, 0, 1, 0, 0],
+];</pre>
+    <p class="label" style="margin-top:14px">CONSOLE ДЭЭР ГАРАХ ЁСТОЙ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› ⬜🟥⬜🟥⬜</code><code>› 🟥🟥🟥🟥🟥</code><code>› 🟥🟥🟥🟥🟥</code><code>› ⬜🟥🟥🟥⬜</code><code>› ⬜⬜🟥⬜⬜</code></div></div>
+    <p class="hint">💡 Гадна давталт мөр бүрээр. Мөр бүрт хоосон line-аас эхэл (гадна давталтын ДОТОР). Дотор давталт тоо бүрийг 🟥 эсвэл ⬜ болгож нэмнэ. Мөр дуусахад line-аа хэвлэ.</p>
+    <p class="uses">Хэрэглэх: <b>давталт дотор давталт · if · текст бүтээх</b></p>
+  </section>
+  <section class="ex">
+    <div class="ex-head"><span class="num">ДАСГАЛ 4</span></div>
+    <h2>Алхам тоолуур 👟</h2>
+    <p class="task">steps[i] нь names[i] хүний 3 өдрийн алхам. Хүн бүрийн нийт алхмыг хэвлээд, хамгийн их алхсан хүнийг хэвлэ.</p>
+    <p class="label">ЭХЛЭХ КОД — хуулж ав</p>
+    <pre style="margin-bottom:6px">const names = ["Бат", "Сараа", "Ану"];
+const steps = [
+  [8000, 6500, 10000],
+  [12000, 9000, 7000],
+  [5000, 4000, 6000],
+];</pre>
+    <p class="label" style="margin-top:14px">CONSOLE ДЭЭР ГАРАХ ЁСТОЙ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› Бат: 24500 алхам</code><code>› Сараа: 28000 алхам</code><code>› Ану: 15000 алхам</code><code>› 🏆 Хамгийн их: Сараа</code></div></div>
+    <p class="hint">💡 Мөр бүрт нийлбэрийг 0-ээс эхлүүл (гадна давталтын дотор). Хамгийн ихийг санахдаа хүний ИНДЕКСИЙГ хадгал, нэрийг нь names-ээс ав.</p>
+    <p class="uses">Хэрэглэх: <b>давталт дотор давталт · мөрийн нийлбэр · хамгийн их</b></p>
+  </section>
+  <section class="ex">
+    <div class="ex-head"><span class="num">ДАСГАЛ 5</span></div>
+    <h2>Хичээл бүрийн дундаж 📊</h2>
+    <p class="task">Мөр бүр — нэг сурагч, багана бүр — нэг хичээл. Хичээл БҮРИЙН (баганын) дундаж оноог хэвлэ.</p>
+    <p class="label">ЭХЛЭХ КОД — хуулж ав</p>
+    <pre style="margin-bottom:6px">const subjects = ["Мат", "Физ", "Англи"];
+const scores = [
+  [90, 80, 70], // Бат
+  [60, 95, 86], // Сараа
+  [75, 65, 99], // Ану
+];</pre>
+    <p class="label" style="margin-top:14px">CONSOLE ДЭЭР ГАРАХ ЁСТОЙ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› Мат: 75</code><code>› Физ: 80</code><code>› Англи: 85</code></div></div>
+    <p class="hint">💡 Энэ удаа ГАДНА давталт баганаар (c), ДОТОР давталт мөрөөр (r): scores[r][c]. Баганын нийлбэрийг сурагчдын тоонд (scores.length) хуваа.</p>
+    <p class="uses">Хэрэглэх: <b>давталт дотор давталт · баганаар · дундаж</b></p>
+  </section>
+  <section class="ex">
+    <div class="ex-head"><span class="num">ДАСГАЛ 6</span></div>
+    <h2>Танхимын тайлан 🎬</h2>
+    <p class="task">Эгнээ бүрт хэдэн суудал зарагдсаныг хэвлэ. Дараа нь нийт зарагдсан, сул суудал, орлогыг (нэг тасалбар 15000₮) хэвлэ.</p>
+    <p class="label">ЭХЛЭХ КОД — хуулж ав</p>
+    <pre style="margin-bottom:6px">const hall = [
+  ["🔴", "🟩", "🔴", "🟩", "🟩"],
+  ["🔴", "🔴", "🔴", "🟩", "🟩"],
+  ["🟩", "🟩", "🟩", "🟩", "🔴"],
+];</pre>
+    <p class="label" style="margin-top:14px">CONSOLE ДЭЭР ГАРАХ ЁСТОЙ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› 1-р эгнээ: 2 зарагдсан</code><code>› 2-р эгнээ: 3 зарагдсан</code><code>› 3-р эгнээ: 1 зарагдсан</code><code>› 🎟 Нийт 6 · сул 9</code><code>› 💰 Орлого: 90000₮</code></div></div>
+    <p class="hint">💡 2 тоолуур: эгнээний (мөр бүрт 0-ээс) ба нийт (хамгийн гадна 0-ээс). Нийт суудлын тоог мөр бүрийн length-ийг нэмж олно.</p>
+    <p class="uses">Хэрэглэх: <b>давталт дотор давталт · if · 2 тоолуур</b></p>
+  </section>
+  <section class="ex">
+    <div class="ex-head"><span class="num">ДАСГАЛ 7</span></div>
+    <h2>Хамгийн халуун өдөр 🔥</h2>
+    <p class="task">Мөр бүр — 1 долоо хоног, багана бүр — 1 өдөр. Хамгийн халуун өдрийг хэддүгээр долоо хоног, хэддүгээр өдөр (1-ээс тоолно) болон хэмтэй нь хэвлэ.</p>
+    <p class="label">ЭХЛЭХ КОД — хуулж ав</p>
+    <pre style="margin-bottom:6px">const temps = [
+  [18, 22, 25, 21, 19, 23, 20],
+  [24, 27, 26, 31, 28, 25, 22],
+  [20, 19, 23, 24, 29, 26, 21],
+];</pre>
+    <p class="label" style="margin-top:14px">CONSOLE ДЭЭР ГАРАХ ЁСТОЙ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› 🔥 Хамгийн халуун: 2-р долоо хоног, 4-р өдөр (31°)</code></div></div>
+    <p class="hint">💡 Хамгийн халууныг temps[0][0]-оос эхлүүл. Илүү халуун олдох бүрт мөрийн (r), баганын (c) индексийг ХОЁУЛАНГ нь хадгал.</p>
+    <p class="uses">Хэрэглэх: <b>давталт дотор давталт · if · мөр, баганын индекс санах</b></p>
+  </section>
+  <section class="ex">
+    <div class="ex-head"><span class="num">ДАСГАЛ 8</span></div>
+    <h2>Диагональ шалгах ↘️</h2>
+    <p class="task">Tic-Tac-Toe хөлгийн 2 диагональыг шалга: ↘️ board[0][0]–board[2][2], ↙️ board[0][2]–board[2][0]. 3 нүд ижил бөгөөд хоосон биш бол ялагчийг хэвлэ.</p>
+    <p class="label">ЭХЛЭХ КОД — хуулж ав</p>
+    <pre style="margin-bottom:6px">const board = [
+  ["❌", "⭕", "⭕"],
+  ["⭕", "❌", ""],
+  ["⭕", "", "❌"],
+];</pre>
+    <p class="label" style="margin-top:14px">CONSOLE ДЭЭР ГАРАХ ЁСТОЙ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› 🎉 ❌ диагональаар яллаа</code></div></div><p class="label" style="margin-top:14px">ХЭРЭВ 3-Р МӨРИЙГ ["⭕", "", ""] БОЛГОВОЛ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› Диагональаар ялагч алга</code></div></div>
+    <p class="hint">💡 ↘️ диагональ дээр мөр = багана: board[i][i]. ↙️ дээр багана = 2 - i. Хоёр true / false хувьсагчаар эхэл, i = 1, 2 дээр эхний нүдтэй ижил биш бол false болго.</p>
+    <p class="uses">Хэрэглэх: <b>for · board[i][i] · board[i][2 - i] · true / false</b></p>
+  </section>
+  <section class="ex">
+    <div class="ex-head"><span class="num">ДАСГАЛ 9</span></div>
+    <h2>Мөр, баганаар ялагч 🏆</h2>
+    <p class="task">Эхлээд 3 мөрийг, дараа нь 3 баганыг шалга. 3 нүд ижил бөгөөд хоосон биш бол АНХ олдсон ялагчийг хэвлэ. Ялагч алга бол түүнийг хэвлэ.</p>
+    <p class="label">ЭХЛЭХ КОД — хуулж ав</p>
+    <pre style="margin-bottom:6px">const board = [
+  ["❌", "⭕", "❌"],
+  ["❌", "⭕", ""],
+  ["", "⭕", "❌"],
+];</pre>
+    <p class="label" style="margin-top:14px">CONSOLE ДЭЭР ГАРАХ ЁСТОЙ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› 🎉 ⭕ 2-р баганаар яллаа</code></div></div><p class="label" style="margin-top:14px">ХЭРЭВ 2-Р МӨРИЙГ ["❌", "❌", "❌"] БОЛГОВОЛ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› 🎉 ❌ 2-р мөрөөр яллаа</code></div></div>
+    <p class="hint">💡 Олдсон эсэхийг found = false-оор эхлүүл. Мөрийн давталт: board[i][0], [i][1], [i][2]. Баганын давталт: board[0][i], [1][i], [2][i]. found false үед л шалга.</p>
+    <p class="uses">Хэрэглэх: <b>for · &amp;&amp; · true / false · if / else if</b></p>
+  </section>
+  <section class="ex">
+    <div class="ex-head"><span class="num">ДАСГАЛ 10</span></div>
+    <h2>Суудал захиалах 🎬</h2>
+    <p class="task">Суудал захиалагдсан бол асуухгүйгээр түүнийг хэвлэ. Сул бол confirm-оор асуу (асуух текст: «Эгнээ 2, суудал 2 — 15000₮. Захиалах уу?»): OK бол 🔴 болгоод «✅ Захиаллаа», Cancel бол «↩️ Цуцаллаа». Төгсгөлд танхимыг мөр мөрөөр нь хэвлэ.</p>
+    <p class="label">ЭХЛЭХ КОД — хуулж ав</p>
+    <pre style="margin-bottom:6px">const seats = [
+  ["🟩", "🟩", "🔴", "🟩"],
+  ["🔴", "🟩", "🟩", "🟩"],
+  ["🟩", "🟩", "🟩", "🔴"],
+];
+const row = 2;
+const seat = 2;</pre>
+    <p class="label" style="margin-top:14px">CONFIRM → OK ДАРВАЛ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› ✅ Захиаллаа</code><code>› 1: 🟩🟩🔴🟩</code><code>› 2: 🔴🔴🟩🟩</code><code>› 3: 🟩🟩🟩🔴</code></div></div><p class="label" style="margin-top:14px">CONFIRM → CANCEL ДАРВАЛ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› ↩️ Цуцаллаа</code><code>› 1: 🟩🟩🔴🟩</code><code>› 2: 🔴🟩🟩🟩</code><code>› 3: 🟩🟩🟩🔴</code></div></div><p class="label" style="margin-top:14px">ХЭРЭВ <code style="letter-spacing:0;font-size:13px">const seat = 1;</code> БОЛ</p>
+    <div class="flow"><div class="mock console"><span class="tag">console</span><code>› ❌ Эгнээ 2, суудал 1 захиалагдсан</code><code>› 1: 🟩🟩🔴🟩</code><code>› 2: 🔴🟩🟩🟩</code><code>› 3: 🟩🟩🟩🔴</code></div></div>
+    <p class="hint">💡 Индекс = дугаар - 1. Сул бол confirm — OK үед true. Танхимыг хэвлэхдээ мөр бүрийг join("")-оор нэг мөр болгож, урд нь эгнээний дугаарыг (r + 1) тавь.</p>
+    <p class="uses">Хэрэглэх: <b>[row - 1][seat - 1] · confirm · for · join</b></p>
+  </section>
+</div>
+</body>
+</html>

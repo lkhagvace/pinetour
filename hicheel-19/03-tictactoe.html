@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="mn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03 · Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="tictactoe.css" />
+  </head>
+  <body>
+    <h1>❌⭕ Tic-Tac-Toe</h1>
+    <h2 id="status">Ээлж: ❌</h2>
+
+    <div class="board">
+      <button class="cell" id="cell00" onclick="play(0, 0)"></button>
+      <button class="cell" id="cell01" onclick="play(0, 1)"></button>
+      <button class="cell" id="cell02" onclick="play(0, 2)"></button>
+      <button class="cell" id="cell10" onclick="play(1, 0)"></button>
+      <button class="cell" id="cell11" onclick="play(1, 1)"></button>
+      <button class="cell" id="cell12" onclick="play(1, 2)"></button>
+      <button class="cell" id="cell20" onclick="play(2, 0)"></button>
+      <button class="cell" id="cell21" onclick="play(2, 1)"></button>
+      <button class="cell" id="cell22" onclick="play(2, 2)"></button>
+    </div>
+
+    <button class="action" onclick="restart()">🔄 Дахин эхлэх</button>
+
+    <script src="03-tictactoe.js"></script>
+  </body>
+</html>
